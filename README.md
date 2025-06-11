@@ -26,7 +26,7 @@ Access all projects from a single dashboard interface.
 
 | # | Project | Description | Tech Stack |
 |---|---------|-------------|------------|
-| 11 | [Modern Blog UI - Enhanced](./11-blog-ui/) | Full-featured blog platform with authentication, CRUD operations, likes, comments, and data persistence | HTML, CSS, JavaScript, localStorage, JSON |
+| 11 | [Modern Blog UI](./11-blog-ui/) | Responsive blog interface with demo login, sample posts, and interactive UI elements | HTML, CSS, JavaScript, localStorage |
 | 12 | [Expense Tracker](./12-expense-tracker/) | Personal expense management with charts | HTML, CSS, JS, Chart.js |
 | 13 | [Movie Info App](./13-movie-info-app/) | Movie search with detailed information | HTML, CSS, JS, TMDB API |
 | 14 | [Basic Chat App](./14-basic-chat-app/) | Real-time messaging application | HTML, CSS, JS, Socket.io, Node.js |
