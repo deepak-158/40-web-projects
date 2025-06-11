@@ -1,0 +1,409 @@
+/* Digital Clock & Alarm Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Clock Section */
+.clock-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.clock-section h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.time-display {
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.time {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #00ff88;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 1.2rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.timezone {
+    font-size: 1rem;
+    color: #666;
+}
+
+.format-toggle {
+    margin-top: 20px;
+}
+
+/* Alarm Section */
+.alarm-section {
+    border-top: 2px solid #eee;
+    padding-top: 30px;
+}
+
+.alarm-section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.alarm-controls {
+    margin-bottom: 25px;
+}
+
+.time-inputs {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.input-group select {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    min-width: 80px;
+}
+
+.input-group select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.alarm-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn.primary {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.btn.primary:hover {
+    background: linear-gradient(135deg, #5a67d8, #6b46c1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn.secondary {
+    background: #f8f9fa;
+    color: #333;
+    border: 2px solid #ddd;
+}
+
+.btn.secondary:hover {
+    background: #e9ecef;
+    border-color: #bbb;
+    transform: translateY(-1px);
+}
+
+.btn.danger {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+}
+
+.btn.danger:hover {
+    background: linear-gradient(135deg, #ff5252, #d63031);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+/* Alarm Status */
+.alarm-status {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-left: 4px solid #28a745;
+}
+
+.alarm-status.no-alarm {
+    border-left-color: #6c757d;
+}
+
+.alarm-status.active {
+    border-left-color: #fd7e14;
+    background: #fff3cd;
+}
+
+.status-text {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Active Alarms */
+.active-alarms {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alarm-item {
+    background: #fff;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.alarm-item:hover {
+    border-color: #667eea;
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.1);
+}
+
+.alarm-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.alarm-time-display {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Courier New', monospace;
+}
+
+.alarm-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+.alarm-actions-inline {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-small {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+/* Alarm Modal */
+.alarm-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.alarm-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+}
+
+.alarm-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: bounce 1s infinite;
+}
+
+.modal-content h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.alarm-time {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+    font-family: 'Courier New', monospace;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .clock-section h1 {
+        font-size: 2rem;
+    }
+    
+    .time {
+        font-size: 3rem;
+    }
+    
+    .time-inputs {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .input-group {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .input-group select {
+        width: 100%;
+    }
+    
+    .alarm-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .alarm-item {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .modal-content {
+        padding: 30px 20px;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .modal-actions .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .time {
+        font-size: 2.5rem;
+    }
+    
+    .clock-section h1 {
+        font-size: 1.8rem;
+    }
+}

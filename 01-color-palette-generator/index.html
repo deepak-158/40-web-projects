@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palette Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Color Palette Generator</h1>
+            <p>Generate beautiful color palettes and save your favorites</p>
+        </header>
+
+        <div class="controls">
+            <button class="btn btn-primary" id="generateBtn">Generate New Palette</button>
+            <button class="btn btn-secondary" id="savePaletteBtn">Save Palette</button>
+            <button class="btn btn-outline" id="showHistoryBtn">View History</button>
+        </div>
+
+        <div class="palette-container" id="paletteContainer">
+            <!-- Color palette will be generated here -->
+        </div>
+
+        <div class="format-selector">
+            <label>Color Format:</label>
+            <select id="colorFormat">
+                <option value="hex">HEX</option>
+                <option value="rgb">RGB</option>
+                <option value="hsl">HSL</option>
+            </select>
+        </div>
+
+        <div class="history-section" id="historySection" style="display: none;">
+            <h2>Saved Palettes</h2>
+            <div class="history-container" id="historyContainer">
+                <!-- Saved palettes will appear here -->
+            </div>
+            <button class="btn btn-danger" id="clearHistoryBtn">Clear All History</button>
+        </div>
+
+        <div class="toast" id="toast">
+            Color copied to clipboard!
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

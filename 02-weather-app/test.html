@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Weather API Test</h1>
+        <input type="text" id="cityInput" placeholder="Enter city name (e.g., London)" value="London">
+        <button onclick="testWeatherAPI()">Test API</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const API_KEY = '5a48e98cf8cc4f4e02bdfd114e77839f';
+        const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
+
+        async function testWeatherAPI() {
+            const city = document.getElementById('cityInput').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!city) {
+                resultDiv.textContent = 'Please enter a city name';
+                return;
+            }
+
+            resultDiv.textContent = 'Testing API...';
+
+            try {
+                const url = `${API_URL}?q=${city}&appid=${API_KEY}&units=metric`;
+                console.log('Testing URL:', url);
+                
+                const response = await fetch(url);
+                console.log('Response status:', response.status);
+                
+                const data = await response.json();
+                console.log('Response data:', data);
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <strong>✅ SUCCESS!</strong><br>
+                        City: ${data.name}, ${data.sys.country}<br>
+                        Temperature: ${Math.round(data.main.temp)}°C<br>
+                        Weather: ${data.weather[0].description}<br>
+                        Humidity: ${data.main.humidity}%<br>
+                        <br>
+                        <strong>Full API Response:</strong><br>
+                        ${JSON.stringify(data, null, 2)}
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <strong>❌ ERROR!</strong><br>
+                        Status: ${response.status}<br>
+                        Message: ${data.message || 'Unknown error'}<br>
+                        <br>
+                        <strong>Full Error Response:</strong><br>
+                        ${JSON.stringify(data, null, 2)}
+                    `;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `
+                    <strong>❌ NETWORK ERROR!</strong><br>
+                    ${error.message}<br>
+                    <br>
+                    This might be a CORS issue or network problem.
+                `;
+            }
+        }
+
+        // Auto-test with London on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                testWeatherAPI();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Test Your Knowledge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div class="screen welcome-screen active" id="welcomeScreen">
+            <div class="welcome-content">
+                <h1>🧠 Quiz Master</h1>
+                <p class="subtitle">Test your knowledge across various topics</p>
+                
+                <div class="quiz-categories">
+                    <h3>Select a Category:</h3>
+                    <div class="category-grid">
+                        <button class="category-btn" data-category="general">
+                            <span class="category-icon">🌟</span>
+                            <span class="category-name">General Knowledge</span>
+                            <span class="category-desc">Mixed topics</span>
+                        </button>
+                        <button class="category-btn" data-category="science">
+                            <span class="category-icon">🧪</span>
+                            <span class="category-name">Science</span>
+                            <span class="category-desc">Physics, Chemistry, Biology</span>
+                        </button>
+                        <button class="category-btn" data-category="history">
+                            <span class="category-icon">🏛️</span>
+                            <span class="category-name">History</span>
+                            <span class="category-desc">World events & civilizations</span>
+                        </button>
+                        <button class="category-btn" data-category="technology">
+                            <span class="category-icon">💻</span>
+                            <span class="category-name">Technology</span>
+                            <span class="category-desc">Programming & IT</span>
+                        </button>
+                        <button class="category-btn" data-category="sports">
+                            <span class="category-icon">⚽</span>
+                            <span class="category-name">Sports</span>
+                            <span class="category-desc">Games & athletics</span>
+                        </button>
+                        <button class="category-btn" data-category="geography">
+                            <span class="category-icon">🌍</span>
+                            <span class="category-name">Geography</span>
+                            <span class="category-desc">Countries & capitals</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="difficulty-selection">
+                    <h3>Select Difficulty:</h3>
+                    <div class="difficulty-buttons">
+                        <button class="difficulty-btn active" data-difficulty="easy">
+                            <span class="difficulty-icon">😊</span>
+                            Easy
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="medium">
+                            <span class="difficulty-icon">🤔</span>
+                            Medium
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="hard">
+                            <span class="difficulty-icon">😱</span>
+                            Hard
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-settings">
+                    <div class="setting-group">
+                        <label for="questionCount">Number of Questions:</label>
+                        <select id="questionCount">
+                            <option value="5">5 Questions</option>
+                            <option value="10" selected>10 Questions</option>
+                            <option value="15">15 Questions</option>
+                            <option value="20">20 Questions</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label for="timeLimit">Time per Question:</label>
+                        <select id="timeLimit">
+                            <option value="15">15 seconds</option>
+                            <option value="30" selected>30 seconds</option>
+                            <option value="60">60 seconds</option>
+                            <option value="0">No limit</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="start-btn" id="startQuizBtn">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div class="screen quiz-screen" id="quizScreen">
+            <div class="quiz-header">
+                <div class="quiz-info">
+                    <div class="question-counter">
+                        <span id="currentQuestion">1</span> / <span id="totalQuestions">10</span>
+                    </div>
+                    <div class="category-display" id="categoryDisplay">General Knowledge</div>
+                </div>
+                <div class="quiz-controls">
+                    <div class="timer" id="timer">
+                        <span class="timer-icon">⏱️</span>
+                        <span id="timeLeft">30</span>s
+                    </div>
+                    <div class="score-display">
+                        Score: <span id="currentScore">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-text" id="questionText">
+                    Loading question...
+                </div>
+
+                <div class="answers-container" id="answersContainer">
+                    <!-- Answers will be populated by JavaScript -->
+                </div>
+
+                <div class="question-actions">
+                    <button class="btn secondary" id="skipBtn">Skip Question</button>
+                    <button class="btn primary" id="nextBtn" disabled>Next Question</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="screen results-screen" id="resultsScreen">
+            <div class="results-content">
+                <div class="results-header">
+                    <div class="trophy-icon" id="trophyIcon">🏆</div>
+                    <h2 id="resultsTitle">Quiz Complete!</h2>
+                    <p class="results-message" id="resultsMessage">Great job on completing the quiz!</p>
+                </div>
+
+                <div class="score-summary">
+                    <div class="final-score">
+                        <div class="score-circle">
+                            <div class="score-number" id="finalScore">0</div>
+                            <div class="score-total">/ <span id="finalTotal">10</span></div>
+                        </div>
+                        <div class="percentage" id="scorePercentage">0%</div>
+                    </div>
+
+                    <div class="score-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">✅</span>
+                            <span class="stat-label">Correct</span>
+                            <span class="stat-value" id="correctAnswers">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">❌</span>
+                            <span class="stat-label">Wrong</span>
+                            <span class="stat-value" id="wrongAnswers">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">⏭️</span>
+                            <span class="stat-label">Skipped</span>
+                            <span class="stat-value" id="skippedAnswers">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">⏱️</span>
+                            <span class="stat-label">Time</span>
+                            <span class="stat-value" id="totalTime">0s</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="performance-message" id="performanceMessage">
+                    <!-- Performance feedback will be added here -->
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn secondary" id="reviewBtn">Review Answers</button>
+                    <button class="btn primary" id="retryBtn">Try Again</button>
+                    <button class="btn secondary" id="homeBtn">Back to Home</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Screen -->
+        <div class="screen review-screen" id="reviewScreen">
+            <div class="review-content">
+                <div class="review-header">
+                    <h2>Review Your Answers</h2>
+                    <button class="btn secondary" id="backToResultsBtn">Back to Results</button>
+                </div>
+
+                <div class="review-questions" id="reviewQuestions">
+                    <!-- Review questions will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

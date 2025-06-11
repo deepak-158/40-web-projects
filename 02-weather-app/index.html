@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Weather App</h1>
+            <p>Get current weather conditions for any city</p>
+        </header>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="cityInput" placeholder="Enter city name..." autocomplete="off">
+                <button id="searchBtn">🔍</button>
+            </div>
+        </div>
+
+        <div class="weather-container" id="weatherContainer" style="display: none;">
+            <div class="weather-card">
+                <div class="weather-header">
+                    <h2 id="cityName">City Name</h2>
+                    <p id="weatherDate">Date</p>
+                </div>
+
+                <div class="weather-main">
+                    <div class="temperature-section">
+                        <div class="temperature" id="temperature">25°C</div>
+                        <div class="unit-toggle">
+                            <button class="unit-btn active" data-unit="celsius">°C</button>
+                            <button class="unit-btn" data-unit="fahrenheit">°F</button>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-icon">
+                        <img id="weatherIcon" src="" alt="Weather Icon">
+                    </div>
+                </div>
+
+                <div class="weather-description">
+                    <p id="weatherDescription">Weather Description</p>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Feels Like</span>
+                        <span class="detail-value" id="feelsLike">25°C</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Humidity</span>
+                        <span class="detail-value" id="humidity">60%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Wind Speed</span>
+                        <span class="detail-value" id="windSpeed">10 km/h</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Pressure</span>
+                        <span class="detail-value" id="pressure">1013 hPa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-searches" id="recentSearches" style="display: none;">
+            <h3>Recent Searches</h3>
+            <div class="recent-list" id="recentList">
+                <!-- Recent searches will appear here -->
+            </div>
+            <button class="clear-btn" id="clearRecentBtn">Clear History</button>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Getting weather data...</p>
+        </div>        <div class="error" id="error" style="display: none;">
+            <div class="error-icon">⚠️</div>
+            <h3 id="errorTitle">Error</h3>
+            <p id="errorMessage">An error occurred</p>
+            <button class="clear-btn" onclick="document.getElementById('error').style.display='none'">Try Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

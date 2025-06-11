@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder - Discover Delicious Recipes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <h1>Recipe Finder</h1>
+            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#search" class="nav-link">Search</a>
+                <a href="#favorites" class="nav-link">Favorites</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h2>Discover Amazing Recipes</h2>
+            <p>Find the perfect recipe for any occasion. Search by ingredients, cuisine, or dietary preferences.</p>
+            <div class="hero-search">
+                <div class="search-container">
+                    <input type="text" id="heroSearchInput" placeholder="Search for recipes..." class="search-input">
+                    <button id="heroSearchBtn" class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Delicious food">
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section" id="search">
+        <div class="container">
+            <h2>Find Your Perfect Recipe</h2>
+            
+            <!-- Search Form -->
+            <div class="search-form">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Enter ingredients, recipe name, or cuisine..." class="main-search-input">
+                    <button id="searchBtn" class="main-search-btn">
+                        <i class="fas fa-search"></i>
+                        Search Recipes
+                    </button>
+                </div>
+                
+                <!-- Filters -->
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="cuisineFilter">Cuisine:</label>
+                        <select id="cuisineFilter" class="filter-select">
+                            <option value="">All Cuisines</option>
+                            <option value="italian">Italian</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="indian">Indian</option>
+                            <option value="french">French</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="thai">Thai</option>
+                            <option value="american">American</option>
+                            <option value="mediterranean">Mediterranean</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="dietFilter">Diet:</label>
+                        <select id="dietFilter" class="filter-select">
+                            <option value="">All Diets</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="gluten-free">Gluten Free</option>
+                            <option value="ketogenic">Keto</option>
+                            <option value="paleo">Paleo</option>
+                            <option value="dairy-free">Dairy Free</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="mealTypeFilter">Meal Type:</label>
+                        <select id="mealTypeFilter" class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                            <option value="dessert">Dessert</option>
+                        </select>
+                    </div>
+                    
+                    <button id="clearFilters" class="clear-filters-btn">
+                        <i class="fas fa-times"></i>
+                        Clear Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="loading-spinner hidden">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Searching for delicious recipes...</p>
+            </div>
+
+            <!-- Search Results -->
+            <div id="searchResults" class="search-results">
+                <!-- Results will be populated here -->
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination hidden">
+                <button id="prevPage" class="page-btn" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                    Previous
+                </button>
+                <span id="pageInfo" class="page-info">Page 1 of 1</span>
+                <button id="nextPage" class="page-btn">
+                    Next
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>    <!-- Favorites Section -->
+    <section class="favorites-section" id="favorites">
+        <div class="container">
+            <h2>Your Favorite Recipes</h2>
+            <div id="favoritesContainer" class="favorites-container">
+                <div class="no-favorites">
+                    <i class="fas fa-heart-broken"></i>
+                    <p>No favorite recipes yet. Start exploring and save your favorites!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Recipe Finder</h2>
+                    <p>Welcome to Recipe Finder, your ultimate destination for discovering amazing recipes from around the world. Whether you're a seasoned chef or just starting your culinary journey, we're here to help you find the perfect recipe for any occasion.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-search"></i>
+                            <h3>Smart Search</h3>
+                            <p>Find recipes by ingredients, cuisine type, dietary preferences, or cooking time. Our advanced search makes discovery easy.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <i class="fas fa-heart"></i>
+                            <h3>Save Favorites</h3>
+                            <p>Keep track of your favorite recipes with our built-in favorites system. All your saved recipes are stored locally on your device.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile Friendly</h3>
+                            <p>Cook anywhere with our fully responsive design. Access your recipes on desktop, tablet, or mobile device.</p>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Dietary Options</h3>
+                            <p>Filter recipes by dietary preferences including vegetarian, vegan, gluten-free, keto, and more.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <h3>1000+</h3>
+                            <p>Recipes Available</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>15+</h3>
+                            <p>Cuisines Covered</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>100%</h3>
+                            <p>Free to Use</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cooking ingredients">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipe Modal -->
+    <div id="recipeModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Recipe details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer" class="notification-container"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Recipe Finder</h3>
+                    <p>Discover amazing recipes from around the world. Cook with confidence and enjoy every meal!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#search">Search</a></li>
+                        <li><a href="#favorites">Favorites</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Recipe Finder. All rights reserved. | Powered by Spoonacular API</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

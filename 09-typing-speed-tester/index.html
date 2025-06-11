@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Tester</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">⌨️ Typing Speed Tester</h1>
+            <p class="subtitle">Test your typing speed and accuracy</p>
+        </header>
+
+        <main class="main">
+            <!-- Settings Panel -->
+            <div class="settings-panel" id="settingsPanel">
+                <h3>Test Settings</h3>
+                <div class="setting-group">
+                    <label for="testDuration">Test Duration:</label>
+                    <select id="testDuration">
+                        <option value="30">30 seconds</option>
+                        <option value="60" selected>1 minute</option>
+                        <option value="120">2 minutes</option>
+                        <option value="300">5 minutes</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label for="textDifficulty">Text Difficulty:</label>
+                    <select id="textDifficulty">
+                        <option value="easy" selected>Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" id="startTestBtn">Start Test</button>
+            </div>
+
+            <!-- Test Area -->
+            <div class="test-area" id="testArea" style="display: none;">
+                <!-- Stats Display -->
+                <div class="stats-display">
+                    <div class="stat-item">
+                        <span class="stat-label">Time:</span>
+                        <span class="stat-value" id="timeDisplay">60</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">WPM:</span>
+                        <span class="stat-value" id="wpmDisplay">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Accuracy:</span>
+                        <span class="stat-value" id="accuracyDisplay">100%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Errors:</span>
+                        <span class="stat-value" id="errorsDisplay">0</span>
+                    </div>
+                </div>
+
+                <!-- Text Display -->
+                <div class="text-display" id="textDisplay">
+                    <div class="text-content" id="textContent"></div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-area">
+                    <textarea 
+                        id="typingInput" 
+                        placeholder="Click here and start typing..."
+                        disabled
+                    ></textarea>
+                </div>
+
+                <!-- Controls -->
+                <div class="controls">
+                    <button class="btn btn-secondary" id="resetBtn">Reset</button>
+                    <button class="btn btn-secondary" id="newTextBtn">New Text</button>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div class="results-screen" id="resultsScreen" style="display: none;">
+                <div class="results-container">
+                    <h2>🎉 Test Complete!</h2>
+                    
+                    <div class="final-stats">
+                        <div class="final-stat">
+                            <div class="final-stat-value" id="finalWPM">0</div>
+                            <div class="final-stat-label">Words Per Minute</div>
+                        </div>
+                        <div class="final-stat">
+                            <div class="final-stat-value" id="finalAccuracy">0%</div>
+                            <div class="final-stat-label">Accuracy</div>
+                        </div>
+                        <div class="final-stat">
+                            <div class="final-stat-value" id="finalErrors">0</div>
+                            <div class="final-stat-label">Total Errors</div>
+                        </div>
+                        <div class="final-stat">
+                            <div class="final-stat-value" id="finalCPM">0</div>
+                            <div class="final-stat-label">Characters Per Minute</div>
+                        </div>
+                    </div>
+
+                    <div class="performance-message" id="performanceMessage"></div>
+
+                    <div class="results-actions">
+                        <button class="btn btn-primary" id="tryAgainBtn">Try Again</button>
+                        <button class="btn btn-secondary" id="shareResultsBtn">Share Results</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>How to use:</h3>
+            <ul>
+                <li>Choose your test duration and difficulty level</li>
+                <li>Click "Start Test" to begin</li>
+                <li>Type the text exactly as shown</li>
+                <li>Correct text appears in green, errors in red</li>
+                <li>Your results will be shown when time is up</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Inspiration - Random Quote Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <i class="fas fa-quote-left icon"></i>
+                Daily Inspiration
+            </h1>
+            <p class="subtitle">Discover wisdom from great minds throughout history</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Quote Display Card -->
+            <div class="quote-card" id="quoteCard">
+                <div class="quote-content">
+                    <div class="quote-mark quote-mark-start">
+                        <i class="fas fa-quote-left"></i>
+                    </div>
+                    
+                    <div class="quote-text-container">
+                        <p class="quote-text" id="quoteText">
+                            Click the button below to discover an inspiring quote that will brighten your day!
+                        </p>
+                        <div class="quote-author" id="quoteAuthor">
+                            Welcome
+                        </div>
+                    </div>
+                    
+                    <div class="quote-mark quote-mark-end">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                </div>
+
+                <!-- Quote Actions -->
+                <div class="quote-actions">
+                    <button class="btn btn-primary" id="newQuoteBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        New Quote
+                    </button>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-icon" id="favoriteBtn" title="Add to Favorites">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        
+                        <button class="btn btn-icon" id="copyBtn" title="Copy Quote">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                        
+                        <button class="btn btn-icon" id="shareBtn" title="Share Quote">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                        
+                        <button class="btn btn-icon" id="tweetBtn" title="Tweet Quote">
+                            <i class="fab fa-twitter"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Selector -->
+            <div class="category-section">
+                <h3>Choose a Category</h3>
+                <div class="category-buttons">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="motivational">Motivational</button>
+                    <button class="category-btn" data-category="wisdom">Wisdom</button>
+                    <button class="category-btn" data-category="success">Success</button>
+                    <button class="category-btn" data-category="life">Life</button>
+                    <button class="category-btn" data-category="love">Love</button>
+                    <button class="category-btn" data-category="friendship">Friendship</button>
+                    <button class="category-btn" data-category="happiness">Happiness</button>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-section">
+                <div class="stat-item">
+                    <div class="stat-number" id="quotesViewedCount">0</div>
+                    <div class="stat-label">Quotes Viewed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="favoritesCount">0</div>
+                    <div class="stat-label">Favorites</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="sharesCount">0</div>
+                    <div class="stat-label">Shared</div>
+                </div>
+            </div>
+
+            <!-- Favorites Section -->
+            <div class="favorites-section" id="favoritesSection">
+                <h3>
+                    <i class="fas fa-heart"></i>
+                    Your Favorite Quotes
+                    <button class="btn btn-small" id="toggleFavoritesBtn">
+                        Show Favorites
+                    </button>
+                </h3>
+                
+                <div class="favorites-container" id="favoritesContainer" style="display: none;">
+                    <div class="favorites-list" id="favoritesList">
+                        <div class="empty-favorites">
+                            <i class="fas fa-heart-broken"></i>
+                            <p>No favorite quotes yet. Click the heart button on quotes you love!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="favorites-actions">
+                        <button class="btn btn-secondary" id="clearFavoritesBtn">
+                            <i class="fas fa-trash"></i>
+                            Clear All Favorites
+                        </button>
+                        <button class="btn btn-secondary" id="exportFavoritesBtn">
+                            <i class="fas fa-download"></i>
+                            Export Favorites
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Daily Inspiration. Spreading positivity one quote at a time.</p>
+        </footer>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Finding the perfect quote...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

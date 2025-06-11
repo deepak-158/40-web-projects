@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock & Alarm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="clock-section">
+            <h1>Digital Clock</h1>
+            <div class="time-display">
+                <div class="time" id="time">00:00:00</div>
+                <div class="date" id="date">Monday, January 1, 2024</div>
+                <div class="timezone" id="timezone">UTC</div>
+            </div>
+            
+            <div class="format-toggle">
+                <button id="formatToggle" class="btn secondary">12 Hour Format</button>
+            </div>
+        </div>
+
+        <div class="alarm-section">
+            <h2>Set Alarm</h2>
+            <div class="alarm-controls">
+                <div class="time-inputs">
+                    <div class="input-group">
+                        <label for="hourInput">Hour</label>
+                        <select id="hourInput">
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="minuteInput">Minute</label>
+                        <select id="minuteInput">
+                            <!-- Options will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <div class="input-group" id="ampmGroup">
+                        <label for="ampmInput">AM/PM</label>
+                        <select id="ampmInput">
+                            <option value="AM">AM</option>
+                            <option value="PM">PM</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="alarm-actions">
+                    <button id="setAlarmBtn" class="btn primary">Set Alarm</button>
+                    <button id="clearAlarmBtn" class="btn secondary">Clear Alarm</button>
+                </div>
+            </div>
+
+            <div class="alarm-status" id="alarmStatus">
+                <div class="status-text">No alarm set</div>
+            </div>
+
+            <div class="active-alarms" id="activeAlarms">
+                <!-- Active alarms will be displayed here -->
+            </div>
+        </div>
+
+        <div class="alarm-modal" id="alarmModal">
+            <div class="modal-content">
+                <div class="alarm-icon">⏰</div>
+                <h3>Alarm!</h3>
+                <p class="alarm-time" id="alarmTime">Time's up!</p>
+                <div class="modal-actions">
+                    <button id="snoozeBtn" class="btn secondary">Snooze (5 min)</button>
+                    <button id="dismissBtn" class="btn primary">Dismiss</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

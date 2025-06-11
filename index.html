@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>40 Web Projects - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .search-input {
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-tab {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-tab.active,
+        .filter-tab:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .project-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .category-header {
+            text-align: center;
+            margin: 50px 0 30px 0;
+            color: white;
+        }
+
+        .category-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .category-header p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-tabs {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 40 Web Projects</h1>
+            <p>A comprehensive collection of web development projects from basic to advanced</p>
+        </header>
+
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search projects by name or technology..." id="searchInput">
+        </div>
+
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-category="all">All Projects</button>
+            <button class="filter-tab" data-category="basic">Basic (1-10)</button>
+            <button class="filter-tab" data-category="intermediate">Intermediate (11-25)</button>
+            <button class="filter-tab" data-category="advanced">Advanced (26-40)</button>
+        </div>
+
+        <div id="projectsContainer">
+            <!-- Projects will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const projects = [
+            // Basic Projects (1-10)
+            { id: 1, title: "Color Palette Generator", description: "Generate random color palettes with clipboard copy and local storage", tech: ["HTML", "CSS", "JavaScript"], category: "basic", folder: "01-color-palette-generator" },
+            { id: 2, title: "Weather App", description: "City weather search with current conditions and icons", tech: ["HTML", "CSS", "JavaScript", "OpenWeatherMap API"], category: "basic", folder: "02-weather-app" },
+            { id: 3, title: "To-Do List App", description: "Task management with CRUD operations and local storage", tech: ["HTML", "CSS", "JavaScript", "LocalStorage"], category: "basic", folder: "03-todo-list" },
+            { id: 4, title: "Calculator", description: "Basic arithmetic calculator with styled interface", tech: ["HTML", "CSS", "JavaScript"], category: "basic", folder: "04-calculator" },
+            { id: 5, title: "Digital Clock & Alarm", description: "Real-time clock with alarm functionality", tech: ["HTML", "CSS", "JavaScript"], category: "basic", folder: "05-digital-clock-alarm" },
+            { id: 6, title: "Quiz App", description: "Multiple choice quiz with scoring system", tech: ["HTML", "CSS", "JavaScript"], category: "basic", folder: "06-quiz-app" },
+            { id: 7, title: "Landing Page Clone", description: "Netflix-inspired landing page design", tech: ["HTML", "CSS", "JavaScript"], category: "basic", folder: "07-landing-page-clone" },
+            { id: 8, title: "Recipe Finder", description: "Search and display recipes with ingredients", tech: ["HTML", "CSS", "JavaScript", "Spoonacular API"], category: "basic", folder: "08-recipe-finder" },
+            { id: 9, title: "Typing Speed Tester", description: "WPM counter with accuracy tracking", tech: ["HTML", "CSS", "JavaScript"], category: "basic", folder: "09-typing-speed-tester" },
+            { id: 10, title: "Random Quote Generator", description: "Inspirational quotes with local database and favorites", tech: ["HTML", "CSS", "JavaScript", "LocalStorage"], category: "basic", folder: "10-random-quote-generator" },
+            
+            // Intermediate Projects (11-25)
+            { id: 11, title: "Blog UI", description: "Blog frontend with post listing and categories", tech: ["HTML", "CSS", "JavaScript"], category: "intermediate", folder: "11-blog-ui" },
+            { id: 12, title: "Expense Tracker", description: "Personal expense management with charts", tech: ["HTML", "CSS", "JavaScript", "Chart.js"], category: "intermediate", folder: "12-expense-tracker" },
+            { id: 13, title: "Movie Info App", description: "Movie search with detailed information", tech: ["HTML", "CSS", "JavaScript", "TMDB API"], category: "intermediate", folder: "13-movie-info-app" },
+            { id: 14, title: "Basic Chat App", description: "Real-time messaging application", tech: ["HTML", "CSS", "JavaScript", "Socket.io", "Node.js"], category: "intermediate", folder: "14-basic-chat-app" },
+            { id: 15, title: "Note-Taking App", description: "Color-coded note management system", tech: ["HTML", "CSS", "JavaScript", "LocalStorage"], category: "intermediate", folder: "15-note-taking-app" },
+            { id: 16, title: "Markdown Editor", description: "Live markdown preview editor", tech: ["HTML", "CSS", "JavaScript", "Marked.js"], category: "intermediate", folder: "16-markdown-editor" },
+            { id: 17, title: "E-commerce Product Page", description: "Product catalog with cart and filters", tech: ["HTML", "CSS", "JavaScript"], category: "intermediate", folder: "17-ecommerce-product-page" },
+            { id: 18, title: "Auth System", description: "User authentication with JWT", tech: ["Node.js", "Express.js", "MongoDB"], category: "intermediate", folder: "18-auth-system" },
+            { id: 19, title: "GitHub Profile Viewer", description: "Display GitHub user profiles and repositories", tech: ["HTML", "CSS", "JavaScript", "GitHub API"], category: "intermediate", folder: "19-github-profile-viewer" },
+            { id: 20, title: "Newsletter Form", description: "Email subscription with backend validation", tech: ["HTML", "CSS", "JavaScript", "Node.js", "Nodemailer"], category: "intermediate", folder: "20-newsletter-form" },
+            { id: 21, title: "Contact Manager", description: "CRUD contact management system", tech: ["Node.js", "Express.js", "MongoDB", "EJS"], category: "intermediate", folder: "21-contact-manager" },
+            { id: 22, title: "Task Board", description: "Trello-like drag and drop task board", tech: ["HTML", "CSS", "JavaScript", "Sortable.js"], category: "intermediate", folder: "22-task-board" },
+            { id: 23, title: "Weather Dashboard", description: "Extended weather app with forecasts", tech: ["HTML", "CSS", "JavaScript", "OpenWeatherMap API"], category: "intermediate", folder: "23-weather-dashboard" },
+            { id: 24, title: "Currency Converter", description: "Real-time currency exchange rates", tech: ["HTML", "CSS", "JavaScript", "ExchangeRate API"], category: "intermediate", folder: "24-currency-converter" },
+            { id: 25, title: "URL Shortener", description: "URL shortening service with analytics", tech: ["Node.js", "Express.js", "MongoDB"], category: "intermediate", folder: "25-url-shortener" },
+            
+            // Advanced Projects (26-40)
+            { id: 26, title: "Full-Stack Blog System", description: "Complete blog with admin panel and comments", tech: ["React", "Node.js", "Express.js", "MongoDB"], category: "advanced", folder: "26-fullstack-blog-system" },
+            { id: 27, title: "E-Commerce Website", description: "Full e-commerce platform with admin dashboard", tech: ["React", "Node.js", "Express.js", "MongoDB"], category: "advanced", folder: "27-ecommerce-website" },
+            { id: 28, title: "OAuth Login System", description: "Google OAuth integration with JWT", tech: ["Node.js", "Express.js", "MongoDB", "Passport.js"], category: "advanced", folder: "28-oauth-login-system" },
+            { id: 29, title: "Real-time Chat Rooms", description: "Multi-room chat application", tech: ["React", "Node.js", "Socket.io"], category: "advanced", folder: "29-realtime-chat-rooms" },
+            { id: 30, title: "Job Board App", description: "Job posting and application platform", tech: ["React", "Node.js", "PostgreSQL"], category: "advanced", folder: "30-job-board-app" },
+            { id: 31, title: "Video Streaming Platform", description: "Video upload and streaming service", tech: ["React", "Node.js", "Firebase Storage"], category: "advanced", folder: "31-video-streaming-platform" },
+            { id: 32, title: "Online Code Editor", description: "Browser-based code editor with live preview", tech: ["React", "Monaco Editor"], category: "advanced", folder: "32-online-code-editor" },
+            { id: 33, title: "Blogging Platform", description: "Blog with comments and likes system", tech: ["Next.js", "Node.js", "MongoDB", "JWT"], category: "advanced", folder: "33-blogging-platform" },
+            { id: 34, title: "Voice Assistant", description: "Voice-controlled information service", tech: ["JavaScript", "Web Speech API"], category: "advanced", folder: "34-voice-assistant" },
+            { id: 35, title: "Online Voting System", description: "Blockchain-based voting platform", tech: ["React", "Solidity", "Web3.js", "Express"], category: "advanced", folder: "35-online-voting-system" },
+            { id: 36, title: "Social Media App", description: "Social networking platform with posts and follows", tech: ["React", "Node.js", "Express.js", "MongoDB"], category: "advanced", folder: "36-social-media-app" },
+            { id: 37, title: "AI Image Generator", description: "Text-to-image generation using AI APIs", tech: ["React", "OpenAI API"], category: "advanced", folder: "37-ai-image-generator" },
+            { id: 38, title: "Blog with Admin Dashboard", description: "CMS with analytics and content management", tech: ["Next.js", "Prisma", "PostgreSQL"], category: "advanced", folder: "38-blog-admin-dashboard" },
+            { id: 39, title: "Project Manager", description: "Jira-like project management tool", tech: ["React", "Express.js", "PostgreSQL", "Socket.io"], category: "advanced", folder: "39-project-manager" },
+            { id: 40, title: "AI ChatBot", description: "AI assistant with context memory and modern UI", tech: ["React", "Node.js", "OpenAI API", "MongoDB"], category: "advanced", folder: "40-ai-chatbot" }
+        ];
+
+        let filteredProjects = projects;
+
+        function renderProjects(projectsToRender = filteredProjects) {
+            const container = document.getElementById('projectsContainer');
+            
+            // Group projects by category
+            const categories = {
+                basic: projectsToRender.filter(p => p.category === 'basic'),
+                intermediate: projectsToRender.filter(p => p.category === 'intermediate'),
+                advanced: projectsToRender.filter(p => p.category === 'advanced')
+            };
+
+            let html = '';
+
+            // Render each category
+            Object.entries(categories).forEach(([category, categoryProjects]) => {
+                if (categoryProjects.length > 0) {
+                    const categoryTitles = {
+                        basic: { title: '📘 Basic Projects (1-10)', subtitle: 'HTML, CSS, JavaScript fundamentals' },
+                        intermediate: { title: '🛠️ Intermediate Projects (11-25)', subtitle: 'APIs, DOM manipulation, Node.js basics' },
+                        advanced: { title: '🚀 Advanced Projects (26-40)', subtitle: 'Full-stack, React, databases, complex integrations' }
+                    };
+
+                    html += `
+                        <div class="category-header">
+                            <h2>${categoryTitles[category].title}</h2>
+                            <p>${categoryTitles[category].subtitle}</p>
+                        </div>
+                        <div class="projects-grid">
+                    `;
+
+                    categoryProjects.forEach(project => {
+                        html += `
+                            <div class="project-card" onclick="window.open('./${project.folder}/', '_blank')">
+                                <div class="project-number">#${project.id.toString().padStart(2, '0')}</div>
+                                <div class="project-title">${project.title}</div>
+                                <div class="project-description">${project.description}</div>
+                                <div class="project-tech">
+                                    ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                                </div>
+                                <a href="./${project.folder}/" class="project-link" onclick="event.stopPropagation()">View Project →</a>
+                            </div>
+                        `;
+                    });
+
+                    html += '</div>';
+                }
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProjects();
+
+            // Filter tabs
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const category = this.dataset.category;
+                    if (category === 'all') {
+                        filteredProjects = projects;
+                    } else {
+                        filteredProjects = projects.filter(p => p.category === category);
+                    }
+                    renderProjects();
+                });
+            });
+
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const searchResults = projects.filter(project => 
+                    project.title.toLowerCase().includes(searchTerm) ||
+                    project.description.toLowerCase().includes(searchTerm) ||
+                    project.tech.some(tech => tech.toLowerCase().includes(searchTerm))
+                );
+                renderProjects(searchResults);
+            });
+        });
+    </script>
+</body>
+</html>
