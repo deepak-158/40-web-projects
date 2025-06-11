@@ -6,7 +6,7 @@
 
 ## 🎯 **Individual Project Links**
 
-### **Completed Projects (1-10)**
+### **Completed Projects (1-11)**
 
 | # | Project Name | Live Demo | Source Code |
 |---|--------------|-----------|-------------|
@@ -20,6 +20,7 @@
 | 08 | Recipe Finder | [🔗 Live](https://40-web-projects.netlify.app/08-recipe-finder/) | [📁 Code](https://github.com/deepak-158/40-web-projects/tree/main/08-recipe-finder) |
 | 09 | Typing Speed Tester | [🔗 Live](https://40-web-projects.netlify.app/09-typing-speed-tester/) | [📁 Code](https://github.com/deepak-158/40-web-projects/tree/main/09-typing-speed-tester) |
 | 10 | Random Quote Generator | [🔗 Live](https://40-web-projects.netlify.app/10-random-quote-generator/) | [📁 Code](https://github.com/deepak-158/40-web-projects/tree/main/10-random-quote-generator) |
+| 11 | Modern Blog UI | [🔗 Live](https://40-web-projects.netlify.app/11-blog-ui/) | [📁 Code](https://github.com/deepak-158/40-web-projects/tree/main/11-blog-ui) |
 
 ## 📱 **Quick Test Links**
 

@@ -36,3 +36,8 @@ Thumbs.db
 # Build outputs (for future projects)
 dist/
 build/
+
+# Development documentation (private)
+DEVELOPMENT-GUIDE.md
+DEPLOYMENT.md
+PORTFOLIO.md

@@ -10,7 +10,7 @@ A comprehensive collection of 40 web development projects showcasing modern web 
 
 ## 📋 Projects Overview
 
-### 🎯 **Completed Projects (1-10)**
+### 🎯 **Completed Projects (1-11)**
 
 | Project | Live Demo | Features | Tech Stack |
 |---------|-----------|----------|------------|
@@ -24,8 +24,9 @@ A comprehensive collection of 40 web development projects showcasing modern web 
 | [Recipe Finder](./08-recipe-finder/) | [Demo →](https://40-web-projects.netlify.app/08-recipe-finder/) | Recipe search, ingredients, nutritional info | HTML, CSS, JS, Spoonacular API |
 | [Typing Speed Tester](./09-typing-speed-tester/) | [Demo →](https://40-web-projects.netlify.app/09-typing-speed-tester/) | WPM calculation, accuracy tracking, statistics | HTML, CSS, JS |
 | [Random Quote Generator](./10-random-quote-generator/) | [Demo →](https://40-web-projects.netlify.app/10-random-quote-generator/) | 70+ quotes, categories, favorites, sharing | HTML, CSS, JS, LocalStorage |
+| [Modern Blog UI](./11-blog-ui/) | [Demo →](https://40-web-projects.netlify.app/11-blog-ui/) | Responsive blog interface, search, filters, dark mode | HTML, CSS, JS, CSS Grid |
 
-### 🛠️ **Coming Soon (11-40)**
+### 🛠️ **Coming Soon (12-40)**
 - Blog UI, Expense Tracker, Movie Info App, Chat Application
 - E-commerce platforms, Authentication systems, Real-time apps
 - MERN Stack projects, Next.js applications, AI integrations

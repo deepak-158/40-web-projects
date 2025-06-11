@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevBlog India - Modern Blog Interface for Indian Developers</title>    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">            <div class="nav-brand">
+                <h1><i class="fas fa-code"></i> DevBlog India</h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-filter="all">All Posts</a></li>
+                    <li><a href="#" class="nav-link" data-filter="javascript">JavaScript</a></li>
+                    <li><a href="#" class="nav-link" data-filter="css">CSS</a></li>
+                    <li><a href="#" class="nav-link" data-filter="react">React</a></li>
+                    <li><a href="#" class="nav-link" data-filter="tutorials">Tutorials</a></li>
+                </ul>
+            </nav>            <div class="nav-actions">
+                <!-- User Authentication -->
+                <div class="user-section" id="userSection">
+                    <button class="login-btn" id="loginBtn">
+                        <i class="fab fa-google"></i> Login with Google
+                    </button>
+                    <div class="user-menu" id="userMenu" style="display: none;">
+                        <div class="user-info">
+                            <img src="" alt="Profile" id="userAvatar" class="user-avatar">
+                            <span id="userName">User Name</span>
+                        </div>
+                        <div class="user-dropdown">
+                            <button class="write-blog-btn" id="writeBlogBtn">
+                                <i class="fas fa-pen"></i> Write Blog
+                            </button>
+                            <button class="logout-btn" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button class="search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-bar" id="searchBar">
+            <div class="container">
+                <div class="search-input-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search articles, authors, or topics..." id="searchInput">
+                    <button class="search-close" id="searchClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Welcome to DevBlog India</h1>
+                <p>Discover the latest in web development, programming tutorials, and coding best practices - tailored for Indian developers and the growing tech ecosystem.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="totalPosts">8</span>
+                        <span class="stat-label">Articles</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="totalCategories">4</span>
+                        <span class="stat-label">Categories</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="totalReads">2.1k</span>
+                        <span class="stat-label">Reads</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Tabs (Mobile) -->
+    <div class="filter-tabs mobile-only">
+        <div class="filter-scroll">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="javascript">JavaScript</button>
+            <button class="filter-tab" data-filter="css">CSS</button>
+            <button class="filter-tab" data-filter="react">React</button>
+            <button class="filter-tab" data-filter="tutorials">Tutorials</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">            <!-- Loading State -->
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading awesome content... कृपया प्रतीक्षा करें!</p>
+            </div>
+
+            <!-- Blog Posts Grid -->
+            <div class="blog-grid" id="blogContainer">
+                <!-- Blog posts will be dynamically inserted here -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="load-more-btn" id="loadMoreBtn">
+                    <i class="fas fa-plus"></i>
+                    Load More Articles
+                </button>
+            </div>
+        </div>
+    </main>    <!-- Article Modal -->
+    <div class="modal" id="articleModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content" id="modalContent">
+                <!-- Article content will be inserted here -->
+            </div>            <div class="modal-footer">
+                <div class="article-actions">
+                    <button class="action-btn like-btn" id="modalLikeBtn">
+                        <i class="fas fa-heart"></i>
+                        <span class="like-count">0</span>
+                    </button>
+                    <button class="action-btn comment-btn" id="showCommentsBtn">
+                        <i class="fas fa-comment"></i>
+                        <span class="comment-count">0</span>
+                    </button>
+                    <button class="action-btn delete-btn" id="modalDeleteBtn" style="display: none;">
+                        <i class="fas fa-trash"></i>
+                        Delete Post
+                    </button>
+                </div>
+                <div class="comments-section" id="commentsSection">
+                    <div class="comments-header">
+                        <h3>Comments</h3>
+                    </div>
+                    <div class="comment-form" id="commentForm">
+                        <textarea placeholder="Write a comment..." id="commentInput"></textarea>
+                        <button class="submit-comment-btn" id="submitCommentBtn">Post Comment</button>
+                    </div>
+                    <div class="comments-list" id="commentsList">
+                        <!-- Comments will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Write Blog Modal -->
+    <div class="modal" id="writeBlogModal">
+        <div class="modal-overlay" id="writeBlogOverlay"></div>
+        <div class="modal-container write-blog-container">
+            <div class="modal-header">
+                <h2>Write New Blog Post</h2>
+                <button class="modal-close" id="writeBlogClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="write-blog-form">
+                <div class="form-group">
+                    <label for="blogTitle">Title</label>
+                    <input type="text" id="blogTitle" placeholder="Enter blog title...">
+                </div>
+                <div class="form-group">
+                    <label for="blogExcerpt">Excerpt</label>
+                    <textarea id="blogExcerpt" placeholder="Brief description of your blog post..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="blogCategory">Category</label>
+                    <select id="blogCategory">
+                        <option value="javascript">JavaScript</option>
+                        <option value="css">CSS</option>
+                        <option value="react">React</option>
+                        <option value="tutorials">Tutorials</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="blogImage">Image URL</label>
+                    <input type="url" id="blogImage" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="blogContent">Content</label>
+                    <textarea id="blogContent" placeholder="Write your blog content here..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button class="cancel-btn" id="cancelBlogBtn">Cancel</button>
+                    <button class="publish-btn" id="publishBlogBtn">Publish Blog</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">                <div class="footer-section">
+                    <h3><i class="fas fa-code"></i> DevBlog India</h3>
+                    <p>Your go-to source for web development insights, tutorials, and industry best practices - crafted specifically for India's thriving tech community.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="RSS"><i class="fas fa-rss"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#" data-filter="javascript">JavaScript</a></li>
+                        <li><a href="#" data-filter="css">CSS & Design</a></li>
+                        <li><a href="#" data-filter="react">React & Frameworks</a></li>
+                        <li><a href="#" data-filter="tutorials">Tutorials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">RSS Feed</a></li>
+                    </ul>
+                </div>
+            </div>
+              <div class="footer-bottom">
+                <p>&copy; 2024 DevBlog India. Made with <i class="fas fa-heart"></i> by Indian developers, for the global tech community. 🇮🇳</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
