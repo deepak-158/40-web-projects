@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Info App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-film"></i> Movie Info App</h1>
+            <p>Discover movies, read reviews, and explore cinema</p>
+        </header>
+
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search for movies...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filters">
+                <select id="sortBy">
+                    <option value="popularity.desc">Most Popular</option>
+                    <option value="release_date.desc">Newest First</option>
+                    <option value="vote_average.desc">Highest Rated</option>
+                    <option value="title.asc">A-Z</option>
+                </select>
+                <select id="genreFilter">
+                    <option value="">All Genres</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Loading movies...</p>
+        </div>
+
+        <div class="error" id="error">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p id="errorMessage">Something went wrong. Please try again.</p>
+        </div>
+
+        <div class="movies-container" id="moviesContainer">
+            <!-- Movies will be dynamically inserted here -->
+        </div>
+
+        <div class="pagination" id="pagination">
+            <button id="prevPage" class="page-btn"><i class="fas fa-chevron-left"></i> Previous</button>
+            <span id="pageInfo">Page 1 of 1</span>
+            <button id="nextPage" class="page-btn">Next <i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Movie Modal -->
+    <div class="modal" id="movieModal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Movie details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

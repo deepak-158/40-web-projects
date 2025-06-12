@@ -27,7 +27,7 @@ Access all projects from a single dashboard interface.
 | # | Project | Description | Tech Stack |
 |---|---------|-------------|------------|
 | 11 | [Modern Blog UI](./11-blog-ui/) | Responsive blog interface with demo login, sample posts, and interactive UI elements | HTML, CSS, JavaScript, localStorage |
-| 12 | [Expense Tracker](./12-expense-tracker/) | Personal expense management with charts | HTML, CSS, JS, Chart.js |
+| 12 | [Expense Tracker](./12-expense-tracker/) | Personal finance manager with charts, filtering, and data export functionality | HTML, CSS, JavaScript, Chart.js |
 | 13 | [Movie Info App](./13-movie-info-app/) | Movie search with detailed information | HTML, CSS, JS, TMDB API |
 | 14 | [Basic Chat App](./14-basic-chat-app/) | Real-time messaging application | HTML, CSS, JS, Socket.io, Node.js |
 | 15 | [Note-Taking App](./15-note-taking-app/) | Color-coded note management system | HTML, CSS, JavaScript, LocalStorage |
